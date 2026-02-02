@@ -1,0 +1,5 @@
+email,password,role
+studentA@fmi.bg,pass123,student
+studentB@fmi.bg,pass456,student
+studentC@fmi.bg,pass789,student
+teacherA@fmi.bg,admin123,teacher

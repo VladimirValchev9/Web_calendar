@@ -30,6 +30,17 @@ button {
     padding: 10px 20px;
     margin: 5px;
 }
+
+.back-button {
+    background: #2980b9;
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
+
+.back-button:hover {
+    background: #1f6391;
+}
 </style>
 </head>
 <body>
@@ -41,6 +52,10 @@ button {
 <button onclick="start()">Старт</button>
 <button onclick="stop()">Стоп</button>
 <button onclick="reset()">Рестарт</button>
+
+<br><br>
+
+<button class="back-button" onclick="window.location.href='calendar.php'">← Назад към календара</button>
 
 <script>
 let totalSeconds = 6 * 60;

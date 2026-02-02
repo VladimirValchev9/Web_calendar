@@ -19,6 +19,12 @@ if (!isset($_SESSION['user_id'])) {
 
     <?php if ($_SESSION['role'] === 'teacher'): ?>
         <a href="add_user.php" style="color:white;margin-right:15px;">Добави потребител</a>
+        <a href="import_students.php" style="color:white;margin-right:15px;">Импорт студенти</a>
+        <a href="export_students.php" style="color:white;margin-right:15px;">Експорт студенти</a>
+        <a href="import_topics.php" style="color:white;margin-right:15px;">Импорт теми</a>
+        <a href="export_topics.php" style="color:white;margin-right:15px;">Експорт теми</a>
+        <a href="generate_slots.php" style="color:white;margin-right:15px;">Генератор слотове</a>
+        <a href="import_slots.php" style="color:white;margin-right:15px;">Импорт слотове</a>
         <a href="approve_presentations.php" style="color:white;margin-right:15px;">Одобрение</a>
     <?php endif; ?>
 

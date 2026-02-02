@@ -42,5 +42,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <button type="submit">Добави</button>
 </form>
 
+<br>
+<button onclick="window.location.href='calendar.php'">← Назад към календара</button>
+
 </body>
 </html>

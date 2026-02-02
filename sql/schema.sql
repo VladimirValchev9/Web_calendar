@@ -30,6 +30,15 @@ CREATE TABLE presentations (
     FOREIGN KEY(student_id) REFERENCES users(id)
 );
 
+CREATE TABLE presentation_times (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    slot_id INT NOT NULL,
+    duration_minutes INT NOT NULL,
+    duration_seconds INT NOT NULL,
+    recorded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (slot_id) REFERENCES slots(id) ON DELETE CASCADE
+);
+
 CREATE TABLE topics (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL UNIQUE,
@@ -65,8 +74,7 @@ INSERT INTO slots (date, time) VALUES
 ('2026-02-01','09:54:00');
 
 ALTER TABLE presentations
-ADD COLUMN user_id INT NULL,
-ADD COLUMN interests TEXT;
+ADD COLUMN user_id INT NULL;
 
 ALTER TABLE presentations
 ADD CONSTRAINT fk_presentations_user

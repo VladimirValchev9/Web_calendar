@@ -8,7 +8,13 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 $user_id = $_SESSION['user_id'];
-$pdo = new PDO("mysql:host=localhost;dbname=web_calendar", "root", "");
+$config = require __DIR__ . '/../config/config.php';
+$pdo = new PDO(
+    "mysql:host={$config->DB_HOST};dbname={$config->DB_NAME};charset=utf8mb4",
+    $config->DB_USER,
+    $config->DB_PASS,
+    [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
+);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $interests = [
