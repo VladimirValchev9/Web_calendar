@@ -1,0 +1,65 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: web_calendar_app
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/var/www/html
+      - ./config/config.php:/var/www/html/config/config.php
+    depends_on:
+      - db
+    networks:
+      - web_calendar_network
+    environment:
+      - DB_HOST=db
+      - DB_NAME=web_calendar
+      - DB_USER=root
+      - DB_PASS=root_password
+    restart: unless-stopped
+
+  db:
+    image: mysql:8.0
+    container_name: web_calendar_db
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: web_calendar
+      MYSQL_USER: web_user
+      MYSQL_PASSWORD: web_password
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./sql/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql
+      - ./sql/add_timer_table.sql:/docker-entrypoint-initdb.d/02-timer.sql
+    networks:
+      - web_calendar_network
+    restart: unless-stopped
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: web_calendar_phpmyadmin
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_USER: root
+      PMA_PASSWORD: root_password
+    depends_on:
+      - db
+    networks:
+      - web_calendar_network
+    restart: unless-stopped
+
+networks:
+  web_calendar_network:
+    driver: bridge
+
+volumes:
+  db_data:
+    driver: local

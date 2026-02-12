@@ -87,12 +87,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['csv_file'])) {
         <h2>Инструкции</h2>
         <p>CSV файлът трябва да има следния формат:</p>
         <pre>title,category
-            CSS Basics,frontend
-            JavaScript Modules,frontend
-            REST API с PHP,backend
-            Docker Fundamentals,technologies
-            HTTP Protocol,basics
-        </pre>
+CSS Basics,frontend
+JavaScript Modules,frontend
+REST API с PHP,backend
+Docker Fundamentals,technologies
+HTTP Protocol,basics</pre>
         
         <p><strong>Валидни категории:</strong></p>
         <ul>

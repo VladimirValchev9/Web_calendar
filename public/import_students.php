@@ -72,10 +72,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['csv_file'])) {
         <h2>Инструкции</h2>
         <p>CSV файлът трябва да има следния формат:</p>
         <pre>email,password,role
-            student1@fmi.bg,pass123,student
-            student2@fmi.bg,pass456,student
-            teacher@fmi.bg,admin123,teacher
-        </pre>
+student1@fmi.bg,pass123,student
+student2@fmi.bg,pass456,student
+teacher@fmi.bg,admin123,teacher</pre>
         
         <p><strong>Бележки:</strong></p>
         <ul>
